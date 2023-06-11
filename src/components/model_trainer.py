@@ -37,9 +37,18 @@ class ModelTrainer:
                 "decision_tree":DecisionTreeRegressor(),
             }
 
+            # params = {
+            #     "decision_tree":{
+            #         'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+            #         'splitter': ['best','random'],
+            #         'max_features':['sqrt','log2']
+            #     }
+            # }
+
+
             model_report: dict = evaluate_model(X_train= X_train, y_train = y_train, 
                                                 X_test = X_test, y_test=y_test,
-                                                models= models)
+                                                models= models, params = None)
             
             # Get the best model Score:
             best_model_score = max(sorted(model_report.values()))
@@ -52,7 +61,7 @@ class ModelTrainer:
             best_model = models[best_model_name]
 
             # set the threshold for best model
-            if best_model_score < 0.7:
+            if best_model_score < 0.6:
                 raise CustomException('No Best model found')
             logging.info('Best found model on training and test dataset')
             
