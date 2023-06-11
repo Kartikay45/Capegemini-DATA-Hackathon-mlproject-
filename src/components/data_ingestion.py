@@ -12,7 +12,11 @@ from dataclasses import dataclass
 @dataclass
 class DataIngestionConfig:
     '''
+    Used to create path variables
     Path: Any input that is required in data ingestion component
+    1. Saving train data - path
+    2. Saving test data- path
+    3. Saving raw data- path
     '''
     train_data_path: str=os.path.join('artifact','train.csv')
     test_data_path: str=os.path.join('artifact','test.csv')
@@ -20,12 +24,12 @@ class DataIngestionConfig:
     
 class DataIngestion:
     def __init__(self):
-        self.ingestion_config = DataIngestionConfig()
+        self.ingestion_config = DataIngestionConfig() #initialize the input
 
     def initiate_data_ingestion(self):
         logging.info('Entered the Data Ingestion component.')
         try:
-            df = pd.read_csv('notebook/data/data-V4.csv')
+            df = pd.read_csv('notebook/data/data.csv', index_col = None)
             logging.info('Read the Dataset as df')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok = True)
@@ -40,10 +44,10 @@ class DataIngestion:
 
             logging.info('Ingestion of the data is completed')
 
+            # return the path for the data transformation step
             return (
                 self.ingestion_config.train_data_path, 
                 self.ingestion_config.test_data_path
-
             )
         except Exception as e:
             raise CustomException(e, sys)
