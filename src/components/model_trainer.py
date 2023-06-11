@@ -9,6 +9,7 @@ from sklearn.ensemble import (
 )
 
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
 from src.exception import CustomException
@@ -35,6 +36,7 @@ class ModelTrainer:
 
             models = {
                 "decision_tree":DecisionTreeRegressor(),
+                "linear_regressor": LinearRegression(),
             }
 
             # params = {
@@ -61,7 +63,7 @@ class ModelTrainer:
             best_model = models[best_model_name]
 
             # set the threshold for best model
-            if best_model_score < 0.6:
+            if best_model_score < 0.7:
                 raise CustomException('No Best model found')
             logging.info('Best found model on training and test dataset')
             
