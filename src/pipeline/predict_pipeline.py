@@ -28,19 +28,18 @@ class CustomData:
     def __init__(self, 
                  lat: float,
                  long: float,
-                 cropA: float,
-                 cropB: float,
-                 cropC: float,
-                 cropD: float,
-                 cropE: float):
+                 cropa_area: float,
+                 cropb_area: float,
+                 cropc_area: float,
+                 cropd_area: float,
+                 crope_area: float):
         self.lat = lat
         self.long = long
-        self.cropA = cropA
-        self.cropB = cropB
-        '''
-        
-        '''
-        pass
+        self.cropa_area = cropa_area
+        self.cropb_area = cropb_area
+        self.cropc_area = cropc_area
+        self.cropd_area = cropd_area
+        self.crope_area = crope_area
 
 
     def get_data_as_data_frame(self):
@@ -49,9 +48,15 @@ class CustomData:
         '''
         try:
             custom_data_input_dict = {
-                'lat':[self.lat],
-                'long':[self.long],
-                'CropA':[self.CropA],
+                'Unnamed: 0':23,
+                'Longitude':[self.lat],
+                'Latitude':[self.long],
+                'CORN, GRAIN - ACRES HARVESTED':[self.cropa_area],
+                'BARLEY - ACRES HARVESTED':[self.cropb_area],
+                'RICE - ACRES HARVESTED':[self.cropc_area],
+                'SUGARCANE, SUGAR - ACRES HARVESTED':[self.cropd_area],
+                'WHEAT - ACRES HARVESTED':[self.crope_area],
+                
             }
 
             return pd.DataFrame(custom_data_input_dict)
