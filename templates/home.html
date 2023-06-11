@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GHG Estimation</title>
+    <style>
+      /* Adjust the map container size */
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <!-- Include the Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script>
+      // Initialize the map and marker variables
+      var map, marker;
+      
+      function initMap() {
+        // Create a map centered at the USA
+        var usa = { lat: 37.0902, lng: -95.7129 };
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: usa,
+          zoom: 4,
+        });
+        
+        // Create a marker that can be dragged by the user
+        marker = new google.maps.Marker({
+          position: defaultLocation,
+          map: map,
+          draggable: true,
+        });
+        
+        // Add an event listener to update the latitude and longitude inputs when the marker is dragged
+        marker.addListener("dragend", function() {
+          var position = marker.getPosition();
+          document.getElementById("latitude").value = position.lat();
+          document.getElementById("longitude").value = position.lng();
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="login">
+      <h1>GHG Estimation</h1>
+  
+      <form action="{{ url_for('predict_emissions')}}" method="post">
+        <h1>
+          <legend>Let's Predict the GHG Emissions</legend>
+        </h1>
+        <div id="map"></div>
+        <div class="mb-3">
+          <label class="form-label">Latitude</label>
+          <input class="form-control" type="text" id="latitude" name="latitude" placeholder="Latitude" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Longitude</label>
+          <input class="form-control" type="text" id="longitude" name="longitude" placeholder="Longitude" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Corn Area</label>
+            <input class="form-control" type="number" name="cropa_area" placeholder="Enter CROPA area" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Barley Area</label>
+            <input class="form-control" type="number" name="cropb_area" placeholder="Enter CROPB area" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Rice Area</label>
+            <input class="form-control" type="number" name="cropc_area" placeholder="Enter CROPC area" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Sugar Area</label>
+            <input class="form-control" type="number" name="cropd_area" placeholder="Enter CROPD area" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Wheat Area</label>
+            <input class="form-control" type="number" name="crope_area" placeholder="Enter CROPE area" step="any" required />
+        </div>
+        <div class="mb-3">
+          <input class="btn btn-primary" type="submit" value="Predict Emissions" required />
+        </div>
+      </form>
+      <h2>
+        The predicted emissions: {{results}}
+      </h2>
+    </div>
+    <script>
+      // Initialize the map when the page has loaded
+      google.maps.event.addDomListener(window, "load", initMap);
+    </script>
+  </body>
+</html>
