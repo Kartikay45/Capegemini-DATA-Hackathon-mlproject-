@@ -21,7 +21,7 @@ app= Flask(__name__)
 # route for home page
 @app.route('/')
 def index():
-    return render_template('kartik/index.html')
+    return render_template('dev/index.html')
 
 @app.route('/mlmodel')
 def mlmodel():
