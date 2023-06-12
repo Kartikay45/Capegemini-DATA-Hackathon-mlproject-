@@ -27,6 +27,9 @@ def index():
 def mlmodel():
     return render_template('home.html')
 
+@app.route('/start')
+def start():
+    return render_template('dev/start.html')
 
 @app.route('/predictdata', methods = ['GET','POST'])
 def predict_datapoint():
