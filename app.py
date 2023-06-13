@@ -34,6 +34,14 @@ def start():
 def about():
     return render_template('dev/about.html')
 
+@app.route('/services')
+def services():
+    return render_template('dev/services.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('dev/contact.html')
+
 
 @app.route('/predictdata', methods = ['GET','POST'])
 def predict_datapoint():

@@ -12,7 +12,7 @@
   <!-- google fonts -->
   <!-- Template CSS -->
   <link rel="stylesheet" type = "text/css" href="{{url_for('static',filename='css/style-starter.css')}}">
-  <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/Untitleddesign.png')}}"/>
+  <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/favicon.ico')}}"/>
   <!-- Template CSS -->
 </head>
 
@@ -23,7 +23,7 @@
       <nav class="navbar navbar-expand-lg stroke">
         <h1><a class="navbar-brand mr-lg-5" href="index.html">
 
-          <img src="/images/Untitled design.png" alt="Your logo" title="Your logo" style="height: 90px;"/>Green<span>Ag</span>
+          <img src="{{url_for('static',filename='images/logo.png')}}" alt="Your logo" title="Your logo" style="height: 90px;"/>Green<span>Ag</span>
           </a></h1>
         <!-- <div class="diagonal-box"><a class="navbar-brand" href="#index.html">
           <img src="/images/Untitled design.png" alt="Your logo" title="Your logo" style="height: 90px;"/>
@@ -41,17 +41,17 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('about')}}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
+              <a class="nav-link" href="{{url_for('services')}}">Services</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
             </li>
 
           </ul>
@@ -96,11 +96,11 @@
               </div>
               <div class="banhny-w3grids">
                 <div class="banhny-w3grids-1">
-                  <img src="/images/Agricultura_Ecologica_746x419.jpg" class="img-curve img-fluid" alt="" />
+                  <img src="{{url_for('static',filename='/images/Agricultura_Ecologica_746x419.jpg')}}" class="img-curve img-fluid" alt="" />
                   <h4><a href="#" class="hnys-title">Organic Fertilizers</a></h4>
                 </div>
                 <div class="banhny-w3grids-1">
-                  <img src="/images/making-agriculture-sustainable-agenda-profitable-should-top_44389510-5548-11e9-8bc0-bee180be535f.jpg" class="img-curve img-fluid" alt="" />
+                  <img src="{{url_for('static',filename='/images/making-agriculture-sustainable-agenda-profitable-should-top_44389510-5548-11e9-8bc0-bee180be535f.jpg')}}" class="img-curve img-fluid" alt="" />
                   <h4><a href="#" class="hnys-title">Expert & Professional Farm</a></h4>
                 </div>
               </div>
@@ -121,11 +121,12 @@
               </div>
               <div class="banhny-w3grids">
                 <div class="banhny-w3grids-1">
-                  <img src="assets/images/banner3.jpg" class="img-curve img-fluid" alt="" />
+                  {{url_for('static',filename='images/banner3.jpg')}}
+                  <img src="{{url_for('static',filename='images/banner3.jpg')}}" class="img-curve img-fluid" alt="" />
                   <h4><a href="#" class="hnys-title">Agricultural Products</a></h4>
                 </div>
                 <div class="banhny-w3grids-1">
-                  <img src="assets/images/banner4.jpg" class="img-curve img-fluid" alt="" />
+                  <img src="{{url_for('static',filename='images/banner4.jpg')}}" class="img-curve img-fluid" alt="" />
                   <h4><a href="#" class="hnys-title">Fresh Dairy Products</a></h4>
                 </div>
               </div>
@@ -146,11 +147,11 @@
               </div>
               <div class="banhny-w3grids">
                 <div class="banhny-w3grids-1">
-                  <img src="assets/images/banner1.jpg" class="img-curve img-fluid" alt="" />
+                  <img src="{{url_for('static',filename='images/banner1.jpg')}}" class="img-curve img-fluid" alt="" />
                   <h4><a href="#" class="hnys-title">Organic Fertilizers</a></h4>
                 </div>
                 <div class="banhny-w3grids-1">
-                  <img src="assets/images/banner2.jpg" class="img-curve img-fluid" alt="" />
+                  <img src="{{url_for('static',filename='images/banner2.jpg')}}" class="img-curve img-fluid" alt="" />
                   <h4><a href="#" class="hnys-title">Expert & Professional Farm</a></h4>
                 </div>
               </div>
@@ -196,11 +197,11 @@
             A New Way To Reduce Emission</h3>
           <p class="my-3 pr-lg-4">Join us on this journey as we strive to revolutionize emissions estimation and support sustainable practices in the agricultural industry. Together, we can make a significant difference in reducing crop-generated emissions and preserving our planet for future generation.
             Further, as the world's population increases, farming will play an increasingly important role in sustaining global societies.</p>
-          <a href="{{url_for('start')}}" class="btn btn-style btn-secondary mt-4">start using our tool</a>
-          <a href="{{url_for('mlmodel')}}" class="btn btn-style btn-secondary mt-4">start using our tool</a>
+          <a href="{{url_for('start')}}" class="btn btn-style btn-secondary mt-4">GHG Estimator</a>
+          <a href="{{url_for('mlmodel')}}" class="btn btn-style btn-secondary mt-4">ML- GHG Estimator</a>
         </div>
         <div class="col-lg-6 bottom-ab-right mt-lg-0 mt-5">
-          <img src="/images/co2-emissions-with-agriculture-blog.jpg" class="img-curve img-fluid" alt="" />
+          <img src="{{url_for('static',filename='/images/co2-emissions-with-agriculture-blog.jpg')}}" class="img-curve img-fluid" alt="" />
         </div>
 
       </div>
@@ -213,7 +214,7 @@
       <div class="container py-md-5">
         <div class="cwp4-two row">
           <div class="cwp4-image col-lg-6 pr-lg-5 mb-lg-0 mb-5">
-            <img src="/images/1-Sri-Lanka-Organic-Agriculture-tea-plantationGettyImages-1234422238.webp" class="img-fluid" alt="" />
+            <img src="{{url_for('static',filename='/images/1-Sri-Lanka-Organic-Agriculture-tea-plantationGettyImages-1234422238.webp')}}" class="img-fluid" alt="" />
           </div>
           <div class="cwp4-text col-lg-6">
             <h6 class="sub-title">what We Do</h6>
@@ -244,14 +245,14 @@
         <div class="row">
           <div class="col-md-6 bg-left px-lg-0">
             <div class="bg-left-img position-relative">
-              <img src="/images/Agricultura_Ecologica_746x419.jpg" class="img-fluid" alt="">
+              <img src="{{url_for('static',filename='images/Agricultura_Ecologica_746x419.jpg')}}" class="img-fluid" alt="">
               <h4 class="tex1-p">Before</h4>
             </div>
 
           </div>
           <div class="col-md-6 mt-md-0 mt-4 bg-right px-lg-0">
             <div class="bg-right-img position-relative">
-              <img src="/images/png-transparent-organic-food-sustainable-agriculture-organic-farming-others-food-harvest-grass.png" class="img-fluid" alt="">
+              <img src="{{url_for('static',filename='images/png-transparent-organic-food-sustainable-agriculture-organic-farming-others-food-harvest-grass.png')}}" class="img-fluid" alt="">
               <h4 class="tex1-p">After</h4>
             </div>
           </div>
@@ -272,7 +273,7 @@
       <div class="row bottom-ab-grids align-items-center">
         <div class="col-lg-4 bottom-ab-left">
           <div class="grdhny-info">
-            <img src="/images/thumb_34512_social_default_big.jpeg" class="img-curve img-fluid" alt="" />
+            <img src="{{url_for('static',filename='images/thumb_34512_social_default_big.jpeg')}}" class="img-curve img-fluid" alt="" />
             <h4><a href="#" class="hnys-title">Industry Oriented</a></h4>
             <p class="mt-2">The pain itself is important to the main adipisicing elite. This hatred is followed by pleasure
               obliged to follow.</p>
@@ -280,7 +281,7 @@
         </div>
         <div class="col-lg-4 bottom-ab-right my-lg-0 my-5">
           <div class="grdhny-info">
-            <img src="/images/Ecologically_grown_vegetables.jpg" class="img-curve img-fluid" alt="" />
+            <img src="{{url_for('static',filename='/images/Ecologically_grown_vegetables.jpg')}}" class="img-curve img-fluid" alt="" />
             <h4><a href="#" class="hnys-title">Fresh Vegetables</a></h4>
             <p class="mt-2">The pain itself is important to the main adipisicing elite. This hatred is followed by pleasure
               obliged to follow.</p>
@@ -288,7 +289,7 @@
         </div>
         <div class="col-lg-4 bottom-ab-right">
           <div class="grdhny-info">
-            <img src="/images/organic-dairy.jpg" class="img-curve img-fluid" alt="" />
+            <img src="{{url_for('static',filename='/images/organic-dairy.jpg')}}" class="img-curve img-fluid" alt="" />
             <h4><a href="#" class="hnys-title">Fresh Milk</a></h4>
             <p class="mt-2">The pain itself is important to the main adipisicing elite. This hatred is followed by pleasure
               obliged to follow.</p>
