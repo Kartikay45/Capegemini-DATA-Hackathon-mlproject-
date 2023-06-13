@@ -64,6 +64,7 @@
       <h1>GHG Estimation</h1>
   
       <form action="/predictdata" method="post">
+        <table>
         <h1>
           <legend>Let's Predict the GHG Emissions</legend>
         </h1>
@@ -99,9 +100,10 @@
         <div class="mb-3">
           <input class="btn btn-primary" type="submit" value="Predict Emissions" required />
         </div>
+        </table>
       </form>
       <h2>
-        The predicted emissions: {{results}}
+        The predicted emissions: {{results}} MMT CO2eq
       </h2>
     </div>
     <script>
