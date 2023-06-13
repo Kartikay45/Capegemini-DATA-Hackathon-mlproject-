@@ -9,7 +9,6 @@ from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 from src.exception import CustomException
 from src.logger import logging
 
-
 import pickle
 import numpy as np
 import pandas as pd
@@ -30,6 +29,11 @@ def mlmodel():
 @app.route('/start')
 def start():
     return render_template('dev/start.html')
+
+@app.route('/about')
+def about():
+    return render_template('dev/about.html')
+
 
 @app.route('/predictdata', methods = ['GET','POST'])
 def predict_datapoint():
