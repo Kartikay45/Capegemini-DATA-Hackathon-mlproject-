@@ -179,3 +179,16 @@ ul.form-stepper li a .form-stepper-circle {
 position: relative;
 text-align: right;
 }
+
+.firstcolumn{
+    float:left;
+}
+.firstcolumn{
+    float:right;
+}
+.satelite{
+width: 43%;
+}
+.firstcolumn{
+   width: 50%;
+}
