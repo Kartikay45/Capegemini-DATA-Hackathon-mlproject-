@@ -15,7 +15,7 @@ Author URL: http://w3layouts.com
   <!-- google fonts -->
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
-  <link rel="icon" type="image/x-icon" href="/images/Untitled design.png" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/favicon.ico')}}" />
   <!-- Template CSS -->
 </head>
 
@@ -24,8 +24,8 @@ Author URL: http://w3layouts.com
   <header id="site-header" class="fixed-top">
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
-        <h1><a class="navbar-brand mr-lg-5" href="index.html">
-          <img src="/images/Untitled design.png" alt="Your logo" title="Your logo" style="height: 90px;"/>Green<span>Ag</span>
+        <h1><a class="navbar-brand mr-lg-5" href="{{url_for('index')}}">
+          <img src="{{url_for('static',filename='images/logo2.png')}}" alt="Your logo" title="Your logo" style="height: 50px;"/>Green<span>Ag</span>
           </a></h1>
         <!-- if logo is image enable this -->
       <!-- <a class="navbar-brand" href="#index.html">
@@ -42,22 +42,22 @@ Author URL: http://w3layouts.com
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="{{url_for('about')}}">About</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="services.html">Services</a>
+              <a class="nav-link" href="{{url_for('services')}}">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
             </li>
 
           </ul>
         </div>
         <div class="d-lg-block d-none">
-          <a href="contact.html" class="btn btn-style btn-secondary ml-lg-3">Register</a>
+          <a href="{{url_for('contact')}}" class="btn btn-style btn-secondary ml-lg-3">Register</a>
         </div>
         <!-- toggle switch for light and dark theme -->
         <div class="mobile-position">
@@ -251,11 +251,11 @@ Author URL: http://w3layouts.com
 
             <ul>
               <h6 class="footer-title-29">Useful Links</h6>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="services.html">Services</a></li>
+              <li><a href="{{url_for('index')}}">Home</a></li>
+              <li><a href="{{url_for('about')}}">About</a></li>
+              <li><a href="{{url_for('services')}}">Services</a></li>
               <li><a href="#"> Blog posts</a></li>
-              <li><a href="contact.html">Contact us</a></li>
+              <li><a href="{{url_for('contact')}}">Contact us</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 footer-list-29 footer-3 mt-lg-0 mt-5">
