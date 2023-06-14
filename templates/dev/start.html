@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
   <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
-  <link rel="icon" type="image/x-icon" href="/images/Untitled design.png"/>
+  <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/favicon.ico')}}"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <title>GreenAg</title>
 </head>
 
-<body>
+<body style="background-color:#F9FBE7;">
 
 
 
@@ -73,7 +73,7 @@
             <div class="label text-muted">Select Fertilizers</div>
           </a>
         </li>
-        <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
+        <li class="form-stepper-unfinished text-center form-stepper-list" step="7">
           <a class="mx-2">
             <span class="form-stepper-circle text-muted">
               <span>O/P</span>
@@ -104,6 +104,14 @@
           <!-- Step 2 input fields -->
           <div class="mt-3">
             <h6>Please select the location of your farm</h6>
+            <div>
+              <label for="lat">Latitude:</label>
+              <input type="number" id="lat" name="lat">
+            </div>
+            <div>
+              <label for="longy">Longitude:</label>
+              <input type="number" id="longy" name="longy">
+            </div>
           </div>
           <div>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6950840.425674824!2d-104.4374920467198!3d31.71684964456462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864070360b823249%3A0x16eb1c8f1808de3c!2sTexas%2C%20USA!5e0!3m2!1sen!2sin!4v1685964608784!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -163,7 +171,8 @@
           <div class="mt-3">
             <div>
               <h6>SELECT SELECT THE CROP</h6>
-              <select name="crop" id="crop">
+              <select name="crup" id="crup">
+                <option value="cotton">Cotton</option>
                 <option value="rice">Rice</option>
                 <option value="wheat">Wheat</option>
               </select>
@@ -174,8 +183,20 @@
               <input type="text" id="area" name="area" required minlength="1" maxlength="4" size="10">
             </div>
             <div>
+              <label for="area">Enter the Lime usage:</label>
+
+              <input type="text" id="lime" name="lime" required minlength="1" maxlength="4" size="10">
+            </div>
+            <div>
               <h6>Any tillage activity?</h6>
               <select name="till" id="till">
+                <option value="yes">YES</option>
+                <option value="no">NO</option>
+              </select>
+            </div>
+            <div>
+              <h6>Any Machinery Used?</h6>
+              <select name="mach" id="mach">
                 <option value="yes">YES</option>
                 <option value="no">NO</option>
               </select>
@@ -194,25 +215,10 @@
           <div class="mt-3">
             <h6>Please enter the fertilizer usage this particular crop</h6>
             <div>
-              <label for="quantity">MAP (between 1 and 50):</label>
-              <input type="number" id="quantity" name="quantity" min="1" max="50">
-            </div>
-            <div>
-              <label for="quantity">DAP (between 1 and 50):</label>
-              <input type="number" id="quantity" name="quantity" min="1" max="50">
-            </div>
-            <div>
               <label for="quantity">UREA (between 1 and 50):</label>
               <input type="number" id="quantity" name="quantity" min="1" max="50">
             </div>
-            <div>
-              <label for="quantity">SOA (between 1 and 50):</label>
-              <input type="number" id="quantity" name="quantity" min="1" max="50">
-            </div>
-            <div>
-              <label for="quantity">UAN (between 1 and 50):</label>
-              <input type="number" id="quantity" name="quantity" min="1" max="50">
-            </div>
+
 
 
 
@@ -221,26 +227,237 @@
           </div>
           <div class="mt-3">
             <button class="button btn-navigate-form-step" type="button" step_number="5">Prev</button>
-            <button class="button btn-navigate-form-step" type="button" step_number="7">Next</button>
+            <button class="button btn-navigate-form-step" type="button" step_number="7" onclick="getInputValue()">Next</button>
           </div>
         </section>
-        <section id="step-4" class="form-step d-none">
+        <section id="step-7" class="form-step d-none">
           <h2 class="font-normal">Output</h2>
           <!-- Step 3 input fields -->
           <div>
-            <h6>Output</h6>
+
+            <table border="3" id="fish">
+              <thead>
+<!-- taking the input heading -->
+                <tr>
+                  <th>LATITUDE&nbsp;&nbsp;</th>
+                  <th>LONGITUDE&nbsp;&nbsp;</th>
+                  <th>RAINFALL&nbsp;&nbsp;</th>
+                  <th>CROPS&nbsp;&nbsp;</th>
+                  <th>CROP&nbsp;&nbsp;</th>
+                  <th>AREA&nbsp;&nbsp;</th>
+                  <th>LIME_USAGE&nbsp;&nbsp;</th>
+                  <th>TILLAGE&nbsp;&nbsp;</th>
+                  <th>MACHINERY&nbsp;&nbsp;</th>
+                  <th>UREA&nbsp;&nbsp;</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+<!-- input id where to displayed -->
+                  <td id="input1"></td>
+                  <td id="input2"></td>
+                  <td id="input3"></td>
+                  <td id="input4"></td>
+                  <td id="input5"></td>
+                  <td id="input6"></td>
+                  <td id="input7"></td>
+                  <td id="input8"></td>
+                  <td id="input9"></td>
+                  <td id="input10"></td>
+
+                </tr>
+              </tbody>
+            </table>
+
 
           </div>
           <div class="mt-3">
             <button class="button btn-navigate-form-step" type="button" step_number="6">Prev</button>
-            <button class="button submit-btn" type="submit">Save</button>
+            <button class="button submit-btn" type="button" onclick="co2_emi_from_cotton_lime(); co2_emi_from_cotton_urea(); n20_emi_from_cotton()">Calculate</button>
+          </div>
+
+
+
+<div>
+  <h4>Results</h4>
+Emissions of Co2 from Cotton Lime:-
+<!-- co2 emission from cotton -->
+<div id="ccl">
+
+</div><br>
+Emission of Co2 from Urea:-
+<!-- co2 emission from urea for cotton -->
+<div id="ccfu">
+
+</div><br>
+N2o Emission from Urea:-
+<!-- n20 emission from urea for cotton -->
+<div id="ncfu">
+
+
+
+</div>
 
           </div>
         </section>
       </form>
     </div>
   </div>
-  <script src="{{ url_for('static', filename='index.js') }}"></script>
+<!-- getting input to output from inputs -->
+<script>
+  function getInputValue(){
+
+  let latitude = document.getElementById("lat").value;
+  let longitude = document.getElementById("longy").value;
+  let rainfall = document.getElementById("rain").value;
+  let cropps = document.getElementById("crop").value;
+  let crupps = document.getElementById("crup").value;
+  let areas = document.getElementById("area").value;
+  let limeuse = document.getElementById("lime").value;
+  let tillage = document.getElementById("till").value;
+  let machine = document.getElementById("mach").value;
+  let fertili = document.getElementById("quantity").value;
+
+  document.getElementById("input1").innerHTML = latitude;
+  document.getElementById("input2").innerHTML = longitude;
+  document.getElementById("input3").innerHTML = rainfall;
+  document.getElementById("input4").innerHTML = cropps;
+  document.getElementById("input5").innerHTML = crupps;
+  document.getElementById("input6").innerHTML = areas;
+  document.getElementById("input7").innerHTML = limeuse;
+  document.getElementById("input8").innerHTML = tillage;
+  document.getElementById("input9").innerHTML = machine;
+  document.getElementById("input10").innerHTML = fertili;
+
+  }
+
+  </script>
+
+<script>
+/**
+ * Define a function to navigate betweens form steps.
+ * It accepts one parameter. That is - step number.
+ */
+ const navigateToFormStep = (stepNumber) => {
+    /**
+     * Hide all form steps.
+     */
+    document.querySelectorAll(".form-step").forEach((formStepElement) => {
+        formStepElement.classList.add("d-none");
+    });
+    /**
+     * Mark all form steps as unfinished.
+     */
+    document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
+        formStepHeader.classList.add("form-stepper-unfinished");
+        formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
+    });
+    /**
+     * Show the current form step (as passed to the function).
+     */
+    document.querySelector("#step-" + stepNumber).classList.remove("d-none");
+    /**
+     * Select the form step circle (progress bar).
+     */
+    const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
+    /**
+     * Mark the current form step as active.
+     */
+    formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+    formStepCircle.classList.add("form-stepper-active");
+    /**
+     * Loop through each form step circles.
+     * This loop will continue up to the current step number.
+     * Example: If the current step is 3,
+     * then the loop will perform operations for step 1 and 2.
+     */
+    for (let index = 0; index < stepNumber; index++) {
+        /**
+         * Select the form step circle (progress bar).
+         */
+        const formStepCircle = document.querySelector('li[step="' + index + '"]');
+        /**
+         * Check if the element exist. If yes, then proceed.
+         */
+        if (formStepCircle) {
+            /**
+             * Mark the form step as completed.
+             */
+            formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
+            formStepCircle.classList.add("form-stepper-completed");
+        }
+    }
+};
+/**
+ * Select all form navigation buttons, and loop through them.
+ */
+document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
+    /**
+     * Add a click event listener to the button.
+     */
+    formNavigationBtn.addEventListener("click", () => {
+        /**
+         * Get the value of the step.
+         */
+        const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
+        /**
+         * Call the function to navigate to the target form step.
+         */
+        navigateToFormStep(stepNumber);
+    });
+});
+
+//calculations
+// area=cotton(hectares/acres)
+// rainfall=region(cm)
+// lime=cotton(tonnes)
+// urea=cotton(tonnes)
+
+// fraclime=1
+// purity of limestone(p)=0.9
+// emission factor for limestone(ef)=0.12
+// cg=3.67
+
+function co2_emi_from_cotton_lime() {
+    var num1 = parseFloat(document.getElementById("lime").value);
+var fraclime = 1;
+var pu = 0.9;
+var ef = 0.12;
+var cg = 3.67;
+    var result1 = (num1*fraclime*pu*ef) + ((num1*(1-fraclime)*pu*ef))*cg;
+    document.getElementById("ccl").innerHTML = result1;
+  }
+
+// ef=0.20
+// c=3.67
+
+  function co2_emi_from_cotton_urea() {
+    var num2 = parseFloat(document.getElementById("quantity").value);
+var ef1 = 0.20;
+var c1 = 3.67;
+    var result2 = num2*ef1*c1;
+    document.getElementById("ccfu").innerHTML = result2;
+  }
+
+
+
+  function n20_emi_from_cotton() {
+    var num3 = parseFloat(document.getElementById("quantity").value);
+    var num4 = parseFloat(document.getElementById("area").value);
+var cos1 = 0.46;
+var cos2 = 1.57;
+var cos3 = 0.0055;
+var cos4 = 265;
+var cos5 = 0.001;
+    var result3 = num3*cos1*num4*cos2*cos3*cos4*cos5;
+    document.getElementById("ncfu").innerHTML = result3;
+  }
+  </script>
+
+
+<!-- <script src="{{url_for('static', filename='/js/index.js')}}"></script> -->
+
 </body>
 
 </html>

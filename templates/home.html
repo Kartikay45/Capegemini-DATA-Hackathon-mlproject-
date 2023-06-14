@@ -10,7 +10,7 @@
       }
     </style>
     <!-- Include the Google Maps JavaScript API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=[APIKEY_WITHOUT_BRACKETS]&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChlO0OQi8N4Yjzak-77EsuDa4p9nYJDtQ&libraries=places"></script>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script>
@@ -69,37 +69,67 @@
           <legend>Let's Predict the GHG Emissions</legend>
         </h1>
         <div id="map"></div>
-        <div class="mb-3">
+        <tr>
+        <div class="mb-3"><td>
           <label class="form-label">Latitude</label>
+        </td>
+        <td>
           <input class="form-control"  id="latitude" name="latitude" placeholder="Latitude"  />
+        </td>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Longitude</label>
-          <input class="form-control"  id="longitude" name="longitude" placeholder="Longitude"  />
+    </tr>
+      <tr>
+        <div class="mb-3"><td>
+          <label class="form-label">Longitude</label></td>
+          <td>
+          <input class="form-control"  id="longitude" name="longitude" placeholder="Longitude"  /></td>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Corn Area</label>
+    </tr>
+     <tr>
+        <div class="mb-3"><td>
+            <label class="form-label">Corn Area</label></td>
+            <td>
             <input class="form-control" type="number" name="cropa_area" placeholder="Enter CROPA area" step="any" required />
+          </td>
         </div>
-        <div class="mb-3">
+      </tr>
+      <tr>
+        <div class="mb-3"><td>
             <label class="form-label">Barley Area</label>
+          </td><td>
             <input class="form-control" type="number" name="cropb_area" placeholder="Enter CROPB area" step="any" required />
+          </td>
         </div>
-        <div class="mb-3">
+      </tr>
+      <tr>
+        <div class="mb-3"><td>
             <label class="form-label">Rice Area</label>
+          </td><td>
             <input class="form-control" type="number" name="cropc_area" placeholder="Enter CROPC area" step="any" required />
+          </td>
         </div>
-        <div class="mb-3">
+      </tr>
+      <tr>
+        <div class="mb-3"><td>
             <label class="form-label">Sugar Area</label>
+          </td><td>
             <input class="form-control" type="number" name="cropd_area" placeholder="Enter CROPD area" step="any" required />
+          </td>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Wheat Area</label>
+      </tr>
+      <tr>
+        <div class="mb-3"><td>
+            <label class="form-label">Wheat Area</label></td>
+            <td>
             <input class="form-control" type="number" name="crope_area" placeholder="Enter CROPE area" step="any" required />
+          </td>
         </div>
-        <div class="mb-3">
-          <input class="btn btn-primary" type="submit" value="Predict Emissions" required />
+      </tr>
+      <tr>
+        <div class="mb-3"><td colspan="2" align="center">
+          <input class="btn btn-primary" type="submit" value="Predict Emissions" required /></td>
         </div>
+      </tr>
         </table>
       </form>
       <h2>
@@ -118,7 +148,6 @@
     
     localStorage.setItem("latitude",clickedLat);
     localStorage.setItem("longitude", clickedLng);
-
 </script>
 
   </body>
