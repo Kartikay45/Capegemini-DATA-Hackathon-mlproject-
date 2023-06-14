@@ -48,7 +48,7 @@ class CustomData:
         '''
         try:
             custom_data_input_dict = {
-                'Unnamed: 0':23,
+                'Unnamed: 0':1,
                 'Longitude':[self.lat],
                 'Latitude':[self.long],
                 'CORN, GRAIN - ACRES HARVESTED':[self.cropa_area],

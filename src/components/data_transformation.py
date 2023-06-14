@@ -10,6 +10,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.preprocessing import FunctionTransformer
 
 
 from src.exception import CustomException
@@ -31,33 +32,36 @@ class DataTransformation:
     
     def get_data_transformer_object(self):
         try:
-            # we are using the decision tree classifier for this particular project
-            # numerical_columns = []
-            # categorical_columns = []
+            # Transformation functions
+            def calculate_x(lat, lon):
+                return np.cos(np.radians(lat)) * np.cos(np.radians(lon))
 
-            # num_pipeline = Pipeline(
-            #     steps = [
-            #         ("imputer", SimpleImputer(strategy='median')),
-            #         ("scaler", StandardScaler())
-            #     ]
-            # )
+            def calculate_y(lat, lon):
+                return np.cos(np.radians(lat)) * np.sin(np.radians(lon))
 
-            # cat_pipeline = Pipeline(
-            #     steps = [
-            #         ('imputer', SimpleImputer(strategy = "most_frequent")),
-            #         ('encoder', OneHotEncoder()),
-            #         ('Scaler', StandardScaler())
-            #     ]
-            # )
+            def calculate_z(lat):
+                return np.sin(np.radians(lat))
+           
+           
+            pipeline = Pipeline([
+                ('transformer', FunctionTransformer(
+                    func=lambda X: np.column_stack([
+                        calculate_x(X.iloc[:, 0], X.iloc[:, 1]),
+                        calculate_y(X.iloc[:, 0], X.iloc[:, 1]),
+                        calculate_z(X.iloc[:, 0])
+                    ]),
+                    validate=False
+                ))
+            ])
 
-            # logging.info('Categorical Columns and Numerical encoding completed')
-
-            logging.info('transformation done')
+            # Create the ColumnTransformer
             preprocessor = ColumnTransformer(
-                transformers=[],
-                remainder="passthrough"
+                transformers=[
+                    ('coordinates', pipeline, ['Latitude', 'Longitude'])
+                ],
+                remainder='passthrough'
             )
-
+            logging.info('transformation done')
             return preprocessor
 
         except Exception as e:
@@ -89,9 +93,27 @@ class DataTransformation:
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
-            train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
-            test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
+            # Create a new DataFrame with transformed coordinates
+            transformed_train_df = pd.DataFrame(
+            input_feature_train_arr,
+            columns=['x', 'y', 'z','Corn','barley','rice','sugar','wheat'],
+            index=train_df.index)
 
+            transformed_test_df = pd.DataFrame(
+            input_feature_test_arr,
+            columns=['x', 'y', 'z','Corn','barley','rice','sugar','wheat'],
+            index=test_df.index)
+
+            # Drop the original latitude and longitude columns
+            # train_df = train_df.drop(['Latitude', 'Longitude'], axis=1)
+            # test_df = test_df.drop(['Latitude', 'Longitude'], axis=1)
+
+            # # Concatenate the new DataFrame with the transformed coordinates
+            # train_df = pd.concat([transformed_train_df,train_df], axis=1)
+            # test_df = pd.concat([transformed_test_df,test_df], axis=1)
+            
+            train_arr = np.c_[np.array(transformed_train_df), np.array(target_feature_train_df)]
+            test_arr = np.c_[np.array(transformed_test_df), np.array(target_feature_test_df)]
             logging.info(f"saved the preprocessing object")
 
             # wrote this function in utils

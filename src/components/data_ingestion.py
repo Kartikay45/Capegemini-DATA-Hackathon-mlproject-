@@ -34,7 +34,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info('Entered the Data Ingestion component.')
         try:
-            df = pd.read_csv('notebook/data/data.csv', index_col = None)
+            df = pd.read_csv('notebook/data/data.csv', index_col = 0)
             logging.info('Read the Dataset as df')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok = True)
@@ -64,6 +64,7 @@ if __name__ == "__main__":
 
     data_transformation = DataTransformation()
     train_arr, test_arr, _ =data_transformation.initiate_data_transformation(train_data, test_data)
-
+    print(train_arr[0])
+    
     model_trainer = ModelTrainer()
     print(model_trainer.initiate_model_trainer(train_arr, test_arr)) # gives the r2_score

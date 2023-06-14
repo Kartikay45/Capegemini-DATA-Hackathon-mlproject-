@@ -35,7 +35,6 @@ class ModelTrainer:
             )
 
             models = {
-                "decision_tree":DecisionTreeRegressor(),
                 "linear_regressor": LinearRegression(),
             }
 
