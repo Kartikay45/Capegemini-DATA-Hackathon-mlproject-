@@ -134,5 +134,3 @@ class DataTransformation:
         except Exception as e:
             raise CustomException(e,sys)
 
-
-            ## working on data_transformation component
