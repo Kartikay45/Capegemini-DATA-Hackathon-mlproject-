@@ -36,3 +36,7 @@ For any inquiries or further information, please contact our team:
 Find us on GitHub:
 - [@apson.006](https://github.com/apson.006)
 - [@Kartikay45](https://github.com/Kartikay45)
+- 
+## Team Board
+
+https://aps06.notion.site/11211d1d028f4f338f04f20ffafdaed9?v=1767f93a00014193a6c173bf003907b1&pvs=4
