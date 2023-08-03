@@ -3,7 +3,7 @@
 The GHG Emission Prediction System is a data-driven solution that aims to address the pressing issue of crop-generated and farming-generated emissions in agricultural farms. The system provides a comprehensive methodology and predictive model to calculate overall greenhouse gas (GHG) emissions, specifically tailored to mapped agricultural farmlands.
 
 ## Problem Statement
-The current lack of data, standard methodologies, tools, and resources to calculate overall emissions in agricultural farms poses a significant challenge. To overcome this, the GHG Emission Prediction System focuses on mapping farm locations and leveraging existing emission data from public farms. By considering multiple parameters such as land usage, land area, farming type, technology used, and existing emissions, the system calculates proxy-based emissions for privately-owned farms.
+The current lack of data, standard methodologies, tools, and resources to calculate overall emissions in agricultural farms poses a significant challenge. To overcome this, the GHG Emission Prediction System focuses on mapping farm locations and leveraging existing emission data and farming data from USDA, IPCC and EPA. By considering multiple parameters such as land usage, land area, Crop yield, Eutrophication, and existing emissions, the system calculates proxy-based emissions for privately-owned farms.
 
 ## Features
 * Farm Location Mapping: The GHG Emission Prediction System allows users to map farm locations using latitude and longitude coordinates, enabling accurate assessment and analysis of emissions.
